@@ -17,7 +17,7 @@ Contact.prototype.fullName = function() {
 }
 
 Address.prototype.fullAddress = function() {
-  return this.addressType + ": " + this.street + ", " + this.city + ", " + this.state;
+  return "<strong>" + this.addressType +": </strong><br>"+  + this.street + ", " + this.city + ", " + this.state;
 }
 
 function resetFields() {
@@ -35,7 +35,7 @@ $(document).ready(function() {
     $("#new-addresses").append('<div class="new-address">' +
                                 '<div class="form-group">' +
                                   '<label for="address-type">Address Type</label>' +
-                                  '<select class="form-control new-type">' +
+                                  '<select class="form-control new-type" id="new-type">' +
                                       '<option>Main</option>' +
                                       '<option>Home</option>' +
                                       '<option>Work</option>' +
@@ -89,5 +89,6 @@ $(document).ready(function() {
 
     resetFields();
 
+    $('.form-group:not(.no-hide)').remove()
   });
 });
