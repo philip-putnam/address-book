@@ -5,10 +5,11 @@ function Contact(first, last) {
   this.addresses = [];
 }
 
-function Address(street, city, state) {
+function Address(street, city, state, addressType) {
   this.street = street;
   this.city = city;
   this.state = state;
+  this.addressType = addressType;
 }
 
 Contact.prototype.fullName = function() {
@@ -16,7 +17,7 @@ Contact.prototype.fullName = function() {
 }
 
 Address.prototype.fullAddress = function() {
-  return this.street + ", " + this.city + ", " + this.state;
+  return this.addressType + ": " + this.street + ", " + this.city + ", " + this.state;
 }
 
 function resetFields() {
@@ -34,7 +35,7 @@ $(document).ready(function() {
     $("#new-addresses").append('<div class="new-address">' +
                                 '<div class="form-group">' +
                                   '<label for="address-type">Address Type</label>' +
-                                  '<select class="form-control">' +
+                                  '<select class="form-control new-type">' +
                                       '<option>Main</option>' +
                                       '<option>Home</option>' +
                                       '<option>Work</option>' +
@@ -68,7 +69,8 @@ $(document).ready(function() {
       var inputtedStreet = $(this).find("input.new-street").val();
       var inputtedCity = $(this).find("input.new-city").val();
       var inputtedState = $(this).find("input.new-state").val();
-      var newAddress = new Address(inputtedStreet, inputtedCity, inputtedState)
+      var inputtedType = $(this).find("#new-type").val();
+      var newAddress = new Address(inputtedStreet, inputtedCity, inputtedState, inputtedType)
       newContact.addresses.push(newAddress)
     });
 
