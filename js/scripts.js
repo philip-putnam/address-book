@@ -29,9 +29,19 @@ function resetFields() {
 
 // user interface logic
 $(document).ready(function() {
-  
+
   $("#add-address").click(function() {
     $("#new-addresses").append('<div class="new-address">' +
+                                '<div class="form-group">' +
+                                  '<label for="address-type">Address Type</label>' +
+                                  '<select class="form-control">' +
+                                      '<option>Main</option>' +
+                                      '<option>Home</option>' +
+                                      '<option>Work</option>' +
+                                      '<option>Mail</option>' +
+                                      '<option>Vacation</option>' +
+                                    '</select>' +
+                                  '</div>' +
                                  '<div class="form-group">' +
                                    '<label for="new-street">Street</label>' +
                                    '<input type="text" class="form-control new-street">' +
